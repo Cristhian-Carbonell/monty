@@ -2,30 +2,32 @@
 
 /**
  * func_struct - checks for opcode's associated function and executes it
- * @opcode: opcode form user input
  * @stack: pointer to stack
  * @num_line: line number of opcode from user input
  *
  * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure
  */
-int func_struct(char *opcode, stack_t **stack, unsigned int num_line)
+void func_struct(stack_t **stack, unsigned int num_line)
 {
-	int i = 0;
+	int i;
 	instruction_t func_stack[] = {
+		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{NULL, NULL}
 	};
 
-	while (func_stack[i].opcode != NULL)
+	for (i = 0; i < 3; i++)
 	{
-		if (strcmp(opcode, func_stack[i].opcode) == 0)
+		if (strcmp(var_op.optoke[0], func_stack[i].opcode) == 0)
 		{
 			(func_stack[i].f)(stack, num_line);
-			return (EXIT_SUCCESS);
+			return;
 		}
-		i++;
 	}
-	printf("L%d: unknown instruction %s\n", num_line, opcode);
-	exit(EXIT_FAILURE);
+	if (i == 3)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", num_line, var_op.optoke[0]);
+		exit(EXIT_FAILURE);
+	}
 }
