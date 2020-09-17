@@ -60,5 +60,6 @@ void pint(stack_t **stack, unsigned int num_line);
 char **split(char *line, char *delimiter);
 int isint(char *str);
 void free_list(char *buffer, stack_t *tmp, stack_t *stack, FILE *file);
+void pop(stack_t **stack, unsigned int num_line);
 
 #endif /* MONTY.H */
