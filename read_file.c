@@ -61,4 +61,5 @@ void free_list(char *buffer, stack_t *tmp, stack_t *stack, FILE *file)
 		free(tmp);
 	}
 	fclose(file);
+	exit(EXIT_SUCCESS);
 }
