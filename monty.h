@@ -10,8 +10,6 @@
 #include <ctype.h>
 #include <fcntl.h>
 
-#define DELIMITERS "\n\t\r "
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -42,12 +40,26 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct mystruct - storing a variable here
+ * @optoks: lines of opcode stored here
+ * Description: this is where I am storing a variable
+ * so that I can use it in multiple functions
+ */
+typedef struct mystruct_s
+{
+	char **optoke;
+} mystruct_t;
+mystruct_t var_op;
+
 void read_file(char *filename, stack_t *stack);
-void push(stack_t **stack, unsigned int num_line, char *new_elem);
-int func_struct(char *opcode, stack_t **stack, unsigned int num_line);
+void push(stack_t **stack, unsigned int num_line);
+void func_struct(stack_t **stack, unsigned int num_line);
 void free_line(stack_t *stack, char *line, FILE *file);
 void free_stack(stack_t **stack);
 void pall(stack_t **stack, unsigned int num_line);
 void pint(stack_t **stack, unsigned int num_line);
+char **split(char *line, char *delimiter);
+int isint(char *str);
 
 #endif /* MONTY.H */
