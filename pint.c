@@ -7,12 +7,12 @@
  */
 void pint(stack_t **stack, unsigned int num_line)
 {
-	stack_t *value = *stack;
+	stack_t *actual = *stack;
 
-	if (value == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
-		printf("L%d: can't pint, stack empty\n", num_line);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", num_line);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", value->n);
+	printf("%d\n", actual->n);
 }
