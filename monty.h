@@ -48,5 +48,6 @@ int func_struct(char *opcode, stack_t **stack, unsigned int num_line);
 void free_line(stack_t *stack, char *line, FILE *file);
 void free_stack(stack_t **stack);
 void pall(stack_t **stack, unsigned int num_line);
+void pint(stack_t **stack, unsigned int num_line);
 
 #endif /* MONTY.H */
