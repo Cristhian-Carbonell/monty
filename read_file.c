@@ -8,31 +8,44 @@
 void read_file(char *filename, stack_t *stack)
 {
 	FILE *file;
-	char *line = NULL;
-	char *opcode, *new_elem;
-	unsigned int num_line;
+	char *delimiter = " \n", *buffer = NULL;
+	unsigned int num_line = 0;
 	size_t lenght;
-	ssize_t read;
+	stack_t *tmp;
 
 	file = fopen(filename, "r");
 	if (file == NULL)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &lenght, file)) != -1)
+	while (getline(&buffer, &lenght, file) != -1)
 	{
 		num_line++;
-		opcode = strtok(line, DELIMITERS);
-		if (opcode == NULL || strncmp(opcode, "#", 1) == 0)
-			continue;
-		if (strcmp(opcode, "push") == 0)
+		var_op.optoke = split(buffer, delimiter);
+		if (var_op.optoke[0] != NULL)
 		{
-			new_elem = strtok(NULL, DELIMITERS);
-			push(&stack, num_line, new_elem);
+			if (var_op.optoke[0][0] == '#')
+			{
+				free(var_op.optoke);
+				continue;
+			}
+			else
+				func_struct(&stack, num_line);
+			free(var_op.optoke);
 		}
 		else
-			func_struct(opcode, &stack, num_line);
+		{
+			free(var_op.optoke);
+			continue;
+		}
 	}
-	free_line(stack, line, file);
+	free(buffer);
+	while (stack != NULL)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
+	fclose(file);
 }
