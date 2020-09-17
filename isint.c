@@ -13,7 +13,7 @@ int isint(char *str)
 	if (str[0] == '-')
 		i++;
 	while (str[i] != '\0')
-       	{
+	{
 		if (isdigit(str[i]) == 0)
 			return (1);
 		i++;

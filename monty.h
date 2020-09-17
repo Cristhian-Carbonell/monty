@@ -41,8 +41,8 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct mystruct - storing a variable here
- * @optoks: lines of opcode stored here
+ * struct mystruct_s - storing a variable here
+ * @optoke: lines of opcode stored here
  * Description: this is where I am storing a variable
  * so that I can use it in multiple functions
  */
