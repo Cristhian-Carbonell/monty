@@ -10,7 +10,7 @@ void read_file(char *filename, stack_t *stack)
 	FILE *file;
 	char *line = NULL;
 	char *opcode, *new_elem;
-	unsigned int num_line = 0;
+	unsigned int num_line;
 	size_t lenght;
 	ssize_t read;
 
