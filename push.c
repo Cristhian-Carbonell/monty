@@ -4,42 +4,31 @@
  * push - push int to a stack
  * @stack: linked lists for monty stack
  * @num_line: number of line opcode occurs on
- * @new_elem: value of new item on stack
  */
-void push(stack_t **stack, unsigned int num_line, char *new_elem)
+void push(stack_t **stack, unsigned int num_line)
 {
-	stack_t *new = NULL;
-	int i = 0;
+	stack_t *new, *tmp;
 
-	if (new_elem == NULL)
+	if (var_op.optoke[1] == NULL || isint(var_op.optoke[1]) != 0)
 	{
-		printf("L%d: usage: push integer\n", num_line);
+		fprintf(stderr, "L%d: usage: push integer\n", num_line);
 		exit(EXIT_FAILURE);
-	}
-	while (new_elem[i] != '\0')
-	{
-		if (new_elem[0] == '-' && i == 0)
-			continue;
-		if (isdigit(new_elem[i]) == 0)
-		{
-			printf("L%d: usage: push integer\n", num_line);
-			exit(EXIT_FAILURE);
-		}
-		i++;
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = atoi(new_elem);
+	new->n = atoi(var_op.optoke[1]);
 	new->prev = NULL;
-	new->next = NULL;
-	if (*stack != NULL)
+	tmp = *stack;
+	if (tmp == NULL)
+		new->next = NULL;
+	else
 	{
-		new->next = *stack;
-		(*stack)->prev = new;
+		new->next = tmp;
+		tmp->prev = new;
 	}
 	*stack = new;
 }
