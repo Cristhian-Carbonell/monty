@@ -11,7 +11,7 @@ void pall(stack_t **stack, unsigned int num_line)
 	(void)num_line;
 
 	if (stack == NULL || *stack == NULL)
-		return;
+		exit(EXIT_FAILURE);
 	while (actual != NULL)
 	{
 		printf("%d\n", actual->n);
