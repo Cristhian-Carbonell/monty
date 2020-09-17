@@ -15,37 +15,25 @@ void read_file(char *filename, stack_t *stack)
 
 	file = fopen(filename, "r");
 	if (file == NULL)
-	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
-	}
 	while (getline(&buffer, &lenght, file) != -1)
-	{
 		num_line++;
 		var_op.optoke = split(buffer, delimiter);
 		if (var_op.optoke[0] != NULL)
-		{
 			if (var_op.optoke[0][0] == '#')
-			{
 				free(var_op.optoke);
 				continue;
-			}
 			else
 				func_struct(&stack, num_line);
 			free(var_op.optoke);
-		}
 		else
-		{
 			free(var_op.optoke);
 			continue;
-		}
-	}
-	free(buffer);
+	free_list(buffer);
 	while (stack != NULL)
-	{
 		tmp = stack;
 		stack = stack->next;
 		free(tmp);
-	}
 	fclose(file);
 }
