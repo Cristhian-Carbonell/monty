@@ -13,6 +13,7 @@ int func_struct(char *opcode, stack_t **stack, unsigned int num_line)
 	int i = 0;
 	instruction_t func_stack[] = {
 		{"pall", pall},
+        {"pint", pint},
 		{NULL, NULL}
 	};
 
