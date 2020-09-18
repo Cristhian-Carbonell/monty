@@ -10,8 +10,6 @@ void pall(stack_t **stack, unsigned int num_line)
 	stack_t *actual = *stack;
 	(void)num_line;
 
-	if (stack == NULL || *stack == NULL)
-		exit(EXIT_FAILURE);
 	while (actual != NULL)
 	{
 		printf("%d\n", actual->n);
