@@ -64,5 +64,6 @@ void pop(stack_t **stack, unsigned int num_line);
 void swap(stack_t **stack, unsigned int num_line);
 void add(stack_t **stack, unsigned int num_line);
 void nop(stack_t **stack, unsigned int num_line);
+void sub(stack_t **stack, unsigned int num_line);
 
 #endif /* MONTY.H */
