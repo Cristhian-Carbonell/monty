@@ -3,7 +3,6 @@
 /**
  * split - split a string
  * @line: string to be split
- * @delimiter: delimiter
  *
  * Return: pointer to array of arrays
  */

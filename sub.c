@@ -1,4 +1,4 @@
-#include "monty.h"
+B#include "monty.h"
 
 /**
  * sub - subtracts the top element of the stack from the
@@ -16,7 +16,7 @@ void sub(stack_t **stack, unsigned int num_line)
 		exit(EXIT_FAILURE);
 	}
 	n1 = *stack;
-	n2 =n1->next;
+	n2 = n1->next;
 	if (n2 == NULL)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", num_line);
