@@ -16,10 +16,11 @@ void func_struct(stack_t **stack, unsigned int num_line)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 	};
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < 6; i++)
 	{
 		if (strcmp(var_op.optoke[0], func_stack[i].opcode) == 0)
 		{
@@ -27,7 +28,7 @@ void func_struct(stack_t **stack, unsigned int num_line)
 			return;
 		}
 	}
-	if (i == 5)
+	if (i == 6)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", num_line, var_op.optoke[0]);
 		exit(EXIT_FAILURE);
