@@ -63,5 +63,6 @@ void free_list(char *buffer, stack_t *tmp, stack_t *stack, FILE *file);
 void pop(stack_t **stack, unsigned int num_line);
 void swap(stack_t **stack, unsigned int num_line);
 void add(stack_t **stack, unsigned int num_line);
+void nop(stack_t **stack, unsigned int num_line);
 
 #endif /* MONTY.H */
