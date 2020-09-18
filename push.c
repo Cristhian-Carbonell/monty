@@ -11,7 +11,7 @@ void push(stack_t **stack, unsigned int num_line)
 
 	if (var_op.optoke[1] == NULL || isint(var_op.optoke[1]) != 0)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", num_line);
+		fprintf(stderr, "L%u: usage: push integer\n", num_line);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
