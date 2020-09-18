@@ -7,7 +7,7 @@
  *
  * Return: pointer to array of arrays
  */
-char **split(char *line, char *delimiter)
+char **split(char *line)
 {
 	char **tokens, *token;
 	int i = 0;
@@ -15,11 +15,11 @@ char **split(char *line, char *delimiter)
 	tokens = malloc(sizeof(char) * 1024);
 	if (tokens == NULL)
 		return (NULL);
-	token = strtok(line, delimiter);
+	token = strtok(line, DELIMITER);
 	while (token != NULL)
 	{
 		tokens[i] = token;
-		token = strtok(NULL, delimiter);
+		token = strtok(NULL, DELIMITER);
 		i++;
 	}
 	tokens[i] = NULL;

@@ -8,7 +8,7 @@
 void read_file(char *filename, stack_t *stack)
 {
 	FILE *file;
-	char *delimiter = " \n", *buffer = NULL;
+	char *buffer = NULL;
 	unsigned int num_line = 0;
 	size_t lenght;
 	stack_t *tmp = NULL;
@@ -22,7 +22,7 @@ void read_file(char *filename, stack_t *stack)
 	while (getline(&buffer, &lenght, file) != -1)
 	{
 		num_line++;
-		var_op.optoke = split(buffer, delimiter);
+		var_op.optoke = split(buffer);
 		if (var_op.optoke[0] != NULL)
 		{
 			if (var_op.optoke[0][0] == '#')

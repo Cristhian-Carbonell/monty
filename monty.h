@@ -52,12 +52,14 @@ typedef struct mystruct_s
 } mystruct_t;
 mystruct_t var_op;
 
+#define DELIMITER " \n"
+
 void read_file(char *filename, stack_t *stack);
 void push(stack_t **stack, unsigned int num_line);
 void func_struct(stack_t **stack, unsigned int num_line);
 void pall(stack_t **stack, unsigned int num_line);
 void pint(stack_t **stack, unsigned int num_line);
-char **split(char *line, char *delimiter);
+char **split(char *line);
 int isint(char *str);
 void free_list(char *buffer, stack_t *tmp, stack_t *stack, FILE *file);
 void pop(stack_t **stack, unsigned int num_line);
@@ -66,4 +68,4 @@ void add(stack_t **stack, unsigned int num_line);
 void nop(stack_t **stack, unsigned int num_line);
 void sub(stack_t **stack, unsigned int num_line);
 
-#endif /* MONTY.H */
+#endif /*MONTY.H*/
